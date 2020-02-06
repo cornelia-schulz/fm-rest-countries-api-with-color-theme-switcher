@@ -1,10 +1,21 @@
 <template>
   <div class="container">
-    <div class="search"></div>
+    <div class="search-wrapper">
+      <input class="search"/>
+      <select>
+        <option
+          v-for="(region, index) in regions"
+          :key="index"
+          :value="region"
+        >
+          {{ region }}
+        </option>
+      </select>
+    </div>
     <div class="card-container">
       <div 
         class="country-card"
-        v-for="country in info"
+        v-for="country in countries"
         :key="country.id"
         >
           <div
@@ -30,22 +41,55 @@ export default {
   name: 'home',
   data () {
     return {
-      info: null
+      countries: null,
+      regions: null
+    }
+  },
+  methods: {
+    filterCountriesByRegion(region) {
+      return region
+    },
+    getRegions(countries) {
+      this.regions = [...new Set(countries.map(country => country.region))];
+    },
+    resetCountries() {
+
     }
   },
   mounted () {
     axios
       .get('https://restcountries.eu/rest/v2/all')
-      .then(response => (this.info = response.data))
+      .then(response => (
+        this.countries = response.data,
+        this.getRegions(response.data)
+        ))
   }
 }
 </script>
 
 <style>
+  .container {
+    margin: 0 5%;
+  }
+
+  .search-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px 0;
+  }
+
+  .search {
+    -webkit-box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
+    -moz-box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
+    box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
+    line-height: 2.5em;
+    min-width: 320px;
+  }
+
   .card-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
 
   .country-card {
