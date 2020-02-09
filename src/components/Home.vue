@@ -2,9 +2,10 @@
   <div class="container">
     <div class="search-wrapper">
       <input class="search"/>
-      <select>
+      <select class="filter-options">
         <option
           v-for="(region, index) in regions"
+          v-on:click="filterCountriesByRegion(region)"
           :key="index"
           :value="region"
         >
@@ -42,15 +43,19 @@ export default {
   data () {
     return {
       countries: null,
+      filteredCountries: null,
       regions: null
     }
   },
   methods: {
     filterCountriesByRegion(region) {
-      return region
+      // eslint-disable-next-line
+      console.log(region)
+      this.countries = this.countries.filter(country => country.region.toLowerCase() === region.toLowerCase());
     },
     getRegions(countries) {
       this.regions = [...new Set(countries.map(country => country.region))];
+      this.regions.splice(0, 0, 'Filter by region');
     },
     resetCountries() {
 
@@ -82,8 +87,13 @@ export default {
     -webkit-box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
     -moz-box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
     box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
+    border: none;
     line-height: 2.5em;
     min-width: 320px;
+  }
+
+  .filter-options {
+    line-height: 2.5em;
   }
 
   .card-container {
