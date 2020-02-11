@@ -2,10 +2,12 @@
   <div class="container">
     <div class="search-wrapper">
       <input class="search"/>
-      <select class="filter-options">
+      <select
+        class="filter-options"
+        v-on:change="filterCountriesByRegion($event.target.value)"
+      >
         <option
           v-for="(region, index) in regions"
-          v-on:click="filterCountriesByRegion(region)"
           :key="index"
           :value="region"
         >
@@ -43,14 +45,14 @@ export default {
   data () {
     return {
       countries: null,
+      countryData: null,
       filteredCountries: null,
       regions: null
     }
   },
   methods: {
     filterCountriesByRegion(region) {
-      // eslint-disable-next-line
-      console.log(region)
+      this.resetCountries();
       this.countries = this.countries.filter(country => country.region.toLowerCase() === region.toLowerCase());
     },
     getRegions(countries) {
@@ -58,7 +60,7 @@ export default {
       this.regions.splice(0, 0, 'Filter by region');
     },
     resetCountries() {
-
+      this.countries = this.countryData.map(country => country);
     }
   },
   mounted () {
@@ -66,6 +68,7 @@ export default {
       .get('https://restcountries.eu/rest/v2/all')
       .then(response => (
         this.countries = response.data,
+        this.countryData = response.data,
         this.getRegions(response.data)
         ))
   }
