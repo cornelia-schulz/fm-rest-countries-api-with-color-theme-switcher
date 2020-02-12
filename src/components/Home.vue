@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <div class="search-wrapper">
-      <input class="search"/>
+      <input
+        class="search"
+        v-on:keyup="findCountry($event.target.value)"
+      />
       <select
         class="filter-options"
         v-on:change="filterCountriesByRegion($event.target.value)"
@@ -53,10 +56,19 @@ export default {
   methods: {
     filterCountriesByRegion(region) {
       this.resetCountries();
-      this.countries = this.countries.filter(country => country.region.toLowerCase() === region.toLowerCase());
+      if (region !== 'Show all countries') {
+        this.countries = this.countries.filter(country => country.region.toLowerCase() === region.toLowerCase());
+      }
+    },
+    findCountry(name) {
+      // eslint-disable-next-line
+      console.log(name)
+      this.resetCountries();
+      this.countries = this.countries.filter(country => country.name.toLowerCase().includes(name.toLowerCase()));
     },
     getRegions(countries) {
       this.regions = [...new Set(countries.map(country => country.region))];
+      this.regions.splice(0, 0, 'Show all countries');
       this.regions.splice(0, 0, 'Filter by region');
     },
     resetCountries() {
