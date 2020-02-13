@@ -1,7 +1,10 @@
 <template>
   <header class="header">
     <h1>Where in the world?</h1>
-    <button>Dark Mode</button>
+    <button>
+      <font-awesome-icon icon="moon" />
+      Dark Mode
+    </button>
   </header>
 </template>
 

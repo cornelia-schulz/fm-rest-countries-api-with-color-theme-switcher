@@ -3,6 +3,7 @@
     <div class="search-wrapper">
       <input
         class="search"
+        placeholder="Search for a country..."
         v-on:keyup="findCountry($event.target.value)"
       />
       <select
@@ -61,8 +62,6 @@ export default {
       }
     },
     findCountry(name) {
-      // eslint-disable-next-line
-      console.log(name)
       this.resetCountries();
       this.countries = this.countries.filter(country => country.name.toLowerCase().includes(name.toLowerCase()));
     },
@@ -108,6 +107,11 @@ export default {
   }
 
   .filter-options {
+    -webkit-box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
+    -moz-box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
+    box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
+    background: #fff;
+    border: none;
     line-height: 2.5em;
   }
 
