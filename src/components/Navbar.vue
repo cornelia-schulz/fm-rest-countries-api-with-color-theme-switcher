@@ -2,7 +2,7 @@
   <header class="header">
     <h1>Where in the world?</h1>
     <button>
-      <font-awesome-icon icon="moon" />
+      <i class="fas fa-moon"></i>
       Dark Mode
     </button>
   </header>
