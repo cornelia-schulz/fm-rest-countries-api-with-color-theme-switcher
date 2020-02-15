@@ -28,6 +28,15 @@ module.exports = {
           })
       },
       {
+        test: /\.(ttf|otf|eot|woff|woff2)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "webfonts/fa-solid-900.woff",
+          },
+        },
+      },
+      {
         test: /\.svg$/,
         rules: [ {
           oneOf: [ {

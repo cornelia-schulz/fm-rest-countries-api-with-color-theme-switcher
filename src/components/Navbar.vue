@@ -1,28 +1,51 @@
 <template>
-  <header class="header">
+  <header
+    class="header"
+    :class="dark ? 'element-dark' : 'element-light'"
+  >
     <h1>Where in the world?</h1>
-    <button>
-      <i class="fas fa-moon"></i>
-      Dark Mode
+    <button
+      class="btnMode"
+      :class="dark ? 'element-dark' : 'element-light'"
+      @click="switchDisplayMode"
+    >
+      <i :class="dark ? 'fas fa-lightbulb' : 'fas fa-moon'"></i>
+      <span>{{ buttonText }}</span>
     </button>
   </header>
 </template>
 
 <script>
+  import { EventBus } from '../event-bus.js';
+
   export default {
+    data() {
+      return {
+        buttonText: ' Dark Mode',
+        dark: false
+      }
+    },
+    methods: {
+      switchDisplayMode() {
+        this.dark = !this.dark;
+        this.buttonText = this.dark ? ' Light Mode' : ' Dark Mode';
+        EventBus.$emit('switch-theme', this.dark);
+      }
+    },
     name: 'navbar'
   }
 </script>
 
 <style>
   .header {
-    -webkit-box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
-    -moz-box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
-    box-shadow: 3px 4px 16px 2px rgba(209,209,209,1);
-    background-color: #fff;
     display: flex;
     justify-content: space-between;
     padding: 0 5%;
     width: 100%;
+  }
+
+  .btnMode {
+    border: none;
+    box-shadow: none;
   }
 </style>
