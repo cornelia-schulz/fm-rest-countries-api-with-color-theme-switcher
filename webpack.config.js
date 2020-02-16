@@ -32,7 +32,7 @@ module.exports = {
         use: {
           loader: "file-loader",
           options: {
-            name: "webfonts/fa-solid-900.woff",
+            name: "/webfonts/fa-solid-900.woff",
           },
         },
       },

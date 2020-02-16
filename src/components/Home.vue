@@ -25,11 +25,12 @@
       </select>
     </div>
     <div class="card-container">
-      <div 
+      <router-link
         class="country-card"
         :class="dark ? 'element-dark' : 'element-light'"
         v-for="country in countries"
         :key="country.id"
+        :to="{ name: 'country', params: { name: country.name, country: country }}"
         >
           <div
             class="image-wrapper"
@@ -42,7 +43,7 @@
             <p>Region: {{ country.region }}</p>
             <p>Capital: {{ country.capital }}</p>
           </div>
-        </div>
+      </router-link>
     </div>
   </div>
 </template>

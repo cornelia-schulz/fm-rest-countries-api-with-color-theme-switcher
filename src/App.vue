@@ -4,19 +4,17 @@
     id="app"
   >
     <Navbar />
-    <Home />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import { EventBus } from './event-bus';
-import Home from './components/Home.vue';
 import Navbar from './components/Navbar.vue';
 
 export default {
   components: {
-    Navbar,
-    Home
+    Navbar
   },
   data() {
     return {
