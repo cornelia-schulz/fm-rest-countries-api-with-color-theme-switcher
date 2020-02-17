@@ -28,9 +28,9 @@
       <router-link
         class="country-card"
         :class="dark ? 'element-dark' : 'element-light'"
-        v-for="country in countries"
-        :key="country.id"
-        :to="{ name: 'country', params: { name: country.name, country: country }}"
+        v-for="(country, index) in countries"
+        :key="index"
+        :to="{ name: 'country', params: { name: country.name, country: country, countries: countries }}"
         >
           <div
             class="image-wrapper"
