@@ -28,6 +28,21 @@ module.exports = {
           })
       },
       {
+        test: /\.scss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              data: `
+              @import "@/scss/_variables.scss";
+              `
+            }
+          }
+        ]
+      },
+      {
         test: /\.(ttf|otf|eot|woff|woff2)$/,
         use: {
           loader: "file-loader",

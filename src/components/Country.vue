@@ -1,7 +1,7 @@
 <template>
   <div class="country-container">
     <div class="navigation">
-      <button>
+      <button class="back-btn">
         <router-link :to="{ name: 'home' }" >Back</router-link>
       </button>
     </div>
@@ -84,10 +84,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import "../assets/scss/variables.scss";
+
   .country-container {
     display: flex;
     flex-direction: column;
+    font-size: 16px;
     justify-content: space-between;
     padding: 0 5%;
     width: 100%;
@@ -96,6 +99,21 @@ export default {
   .country-wrapper {
     display: flex;
     justify-content: space-between;
+  }
+
+  .back-btn {
+    background-color: $very-light-grey;
+    box-shadow: $box-shadow;
+    border: none;
+    border-radius: $border-radius;
+    margin: 4rem 0;
+    padding: 0.7rem 2rem;
+  }
+
+  .back-btn a {
+    color: $very-dark-blue-text;
+    font-size: $details-font-size;
+    text-decoration: none;
   }
 
   .flag {
@@ -115,6 +133,7 @@ export default {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    font-size: $details-font-size;
     height: 14rem;
   }
 </style>

@@ -36,16 +36,21 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   .header {
     display: flex;
     justify-content: space-between;
-    padding: 0 5%;
+    padding: 2rem 5%;
     width: 100%;
   }
 
   .btnMode {
     border: none;
     box-shadow: none;
+
+    &.element-light {
+      border: none;
+      box-shadow: none;
+    }  
   }
 </style>

@@ -7,7 +7,8 @@
       <input
         class="icon search"
         :class="dark ? 'element-dark' : 'element-light'"
-        placeholder="Search for a country..."
+        placeholder="&#xF002; Search for a country..."
+        type="text"
         v-on:keyup="findCountry($event.target.value)"
       />
       <select
@@ -48,7 +49,7 @@
   </div>
 </template>
 
-<script>
+<script charset="utf-8">
 import axios from 'axios';
 import { EventBus } from '../event-bus.js';
 
@@ -106,7 +107,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import "../assets/scss/variables.scss";
+
   .container {
     margin: 0 5%;
   }
@@ -120,17 +123,27 @@ export default {
 
   .search {
     border: none;
-    color: hsl(0, 0%, 52%);
+    border-radius: $border-radius;
+    color: $dark-grey;
+    font-family: "FontAwesome 5 Free", "Open Sans", Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
     line-height: 2.5rem;
     min-width: 320px;
     padding: 0.5rem;
+    text-decoration: inherit;
   }
 
   .filter-options {
     border: none;
-    color: hsl(0, 0%, 52%);
+    border-radius: $border-radius;
+    color: $dark-grey;
     line-height: 2.5em;
     padding: 0.5rem;
+
+    &:after {
+      content: "ccc";
+    }
   }
 
   .card-container {
@@ -140,8 +153,10 @@ export default {
   }
 
   .country-card {
+    border-radius: $border-radius;
     flex-basis: 21%;
     margin: 15px 0;
+    text-decoration: none;
   }
 
   .image-wrapper {
@@ -152,14 +167,18 @@ export default {
   }
 
   .card-content {
-    padding: 0 15px;
-  }
+    padding: 2rem 1.5rem;
 
-  .search::before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f007";
-}
+    h2 {
+      font-size: $details-font-size;
+      line-height: 2.5rem;
+    }
+
+    p {
+      font-size: $home-font-size;
+      line-height: 1.7rem;
+    }
+  }
 
 @media only screen and (max-width: 1000px) {
   .country-card {
