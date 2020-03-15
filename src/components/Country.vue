@@ -43,7 +43,7 @@
         </p>
         </div>
         <div class="border-info">
-          <span><b>Border Countries</b></span>
+          <span><b>Border Countries: </b></span>
           <button v-for="(borderCountry, index) in country.borders" :key="index">{{ borderCountry }}</button>
         </div>
       </div>
@@ -127,6 +127,11 @@ export default {
   .country {
     flex-grow: 1;
     margin-left: 2rem;
+    padding: 2rem;
+
+    h2 {
+      font-size: 2rem;
+    }
   }
 
   .country-info {
@@ -134,6 +139,22 @@ export default {
     flex-direction: column;
     flex-wrap: wrap;
     font-size: $details-font-size;
-    height: 14rem;
+    height: 10rem;
+    margin: 2rem 0;
+
+    p {
+      line-height: 2rem;
+    }
+  }
+
+  .border-info {
+    button {
+      background-color: $very-light-grey;
+      box-shadow: $box-shadow;
+      border: none;
+      border-radius: $border-radius;
+      margin-left: 0.5rem;
+      padding: 0.4rem 1rem;
+    }
   }
 </style>
