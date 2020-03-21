@@ -44,7 +44,7 @@
         </div>
         <div class="border-info">
           <span><b>Border Countries: </b></span>
-          <button v-for="(borderCountry, index) in country.borders" :key="index">{{ borderCountry }}</button>
+          <button v-for="(borderCountry, index) in borderCountries" :key="index">{{ borderCountry }}</button>
         </div>
       </div>
     </div>
@@ -57,28 +57,32 @@ import axios from 'axios';
 export default {
   data () {
     return {
-    countries: {},
-    country: {},
-    countryName: this.$route.params.name
+      borderCountries: [],
+      borders: [],
+      countries: {},
+      country: {},
+      countryName: this.$route.params.name
     }
   },
-  computed: {
-    borderCountries(country) {
-    return this.countries.map(c => c.alpha3Code === country)
-    }
+  methods: {
+    getBorderCountries() {}
   },
   mounted() {
     axios
     .get('https://restcountries.eu/rest/v2/name/' + this.countryName)
     .then(response => (
-    this.country = response.data[0]
-    ))
-
-    axios
-    .get('https://restcountries.eu/rest/v2/all')
+    this.country = response.data[0],
+    this.borders = response.data[0].borders
+    )).then (() => (
+      axios
+      .get('https://restcountries.eu/rest/v2/all')
       .then(response => (
         this.countries = response.data
+        )).then(() => (
+          this.borderCountries = this.borders.map(b => this.countries.find(c => c.alpha3Code.toUpperCase() === b.toUpperCase()).name)
         ))
+    ))
+    
   },
   name: 'Country'
 }
@@ -153,6 +157,7 @@ export default {
       box-shadow: $box-shadow;
       border: none;
       border-radius: $border-radius;
+      margin-bottom: 0.5rem;
       margin-left: 0.5rem;
       padding: 0.4rem 1rem;
     }

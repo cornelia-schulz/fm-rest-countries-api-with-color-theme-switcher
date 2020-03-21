@@ -85,8 +85,6 @@ export default {
     },
     switchDisplayMode() {
       EventBus.$on('switch-theme', dark => {
-        // eslint-disable-next-line
-        console.log(dark)
       this.dark = dark;
       });
     }
@@ -99,7 +97,7 @@ export default {
         this.countryData = response.data,
         this.getRegions(response.data)
         ))
-
+    
     EventBus.$on('switch-theme', dark => {
       this.dark = dark;
     });
