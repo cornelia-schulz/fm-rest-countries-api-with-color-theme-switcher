@@ -53,4 +53,12 @@
       box-shadow: none;
     }  
   }
+
+  @media only screen and (max-width: 375px) {
+    .header {
+      h1 {
+        font-size: 1.2em;
+      }
+    }
+  }
 </style>

@@ -15,32 +15,36 @@
       <div class="country">
         <h2>{{ country.name }}</h2>
         <div class="country-info">
-          <p><b>Native Name: </b>{{ country.nativeName }}</p>
-          <p><b>Population: </b>{{ country.population }}</p>
-          <p><b>Region: </b>{{ country.region }}</p>
-          <p><b>Sub Region: </b>{{ country.subregion }}</p>
-          <p><b>Capital: </b>{{ country.capital }}</p>
-          <p>
-            <b>Top Level Domain: </b>
-            <span v-for="(tld, index) in country.topLevelDomain" :key="index">{{ tld }}</span>
-          </p>
-          <p>
-            <b>Currencies: </b>
-            <span v-for="(currency, index) in country.currencies" :key="index">
-              {{ currency.name }}
-              <span v-if="country.currencies.length > 1 && index < country.currencies.length -1">, </span>
-            </span>
-        </p>
-        <p>
-          <b>Languages: </b>
-          <span
-            v-for="(language, index) in country.languages"
-            :key="index"
-          >
-            {{ language.name }}
-            <span v-if="country.languages.length > 1 && index < country.languages.length - 1">, </span>
-          </span>
-        </p>
+          <ul>
+            <li><b>Native Name: </b>{{ country.nativeName }}</li>
+            <li><b>Population: </b>{{ country.population }}</li>
+            <li><b>Region: </b>{{ country.region }}</li>
+            <li><b>Sub Region: </b>{{ country.subregion }}</li>
+            <li><b>Capital: </b>{{ country.capital }}</li>
+          </ul>
+          <ul>
+            <li>
+              <b>Top Level Domain: </b>
+              <span v-for="(tld, index) in country.topLevelDomain" :key="index">{{ tld }}</span>
+            </li>
+            <li>
+              <b>Currencies: </b>
+              <span v-for="(currency, index) in country.currencies" :key="index">
+                {{ currency.name }}
+                <span v-if="country.currencies.length > 1 && index < country.currencies.length -1">, </span>
+              </span>
+            </li>
+            <li>
+              <b>Languages: </b>
+              <span
+                v-for="(language, index) in country.languages"
+                :key="index"
+              >
+                {{ language.name }}
+                <span v-if="country.languages.length > 1 && index < country.languages.length - 1">, </span>
+              </span>
+            </li>
+          </ul>
         </div>
         <div class="border-info">
           <span><b>Border Countries: </b></span>
@@ -144,14 +148,25 @@ export default {
     flex-wrap: wrap;
     font-size: $details-font-size;
     height: 10rem;
-    margin: 2rem 0;
+    
+    ul {
+      margin: 2rem 0;
+    }
 
-    p {
+    ul li {
       line-height: 2rem;
+      list-style-type: none;
     }
   }
 
   .border-info {
+    margin: 2rem 0;
+
+    span {
+      font-size: 1.2em;
+      line-height: 3rem;
+    }
+
     button {
       background-color: $very-light-grey;
       box-shadow: $box-shadow;
@@ -160,6 +175,25 @@ export default {
       margin-bottom: 0.5rem;
       margin-left: 0.5rem;
       padding: 0.4rem 1rem;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .country-wrapper {
+      flex-wrap: wrap;
+    }
+
+    .country {
+      margin-left: 0;
+      padding: 2rem 0;
+    }
+
+    .flag {
+      flex-basis: 100%;
+    }
+
+    .country-info {
+      height: auto;
     }
   }
 </style>

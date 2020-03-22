@@ -4,16 +4,26 @@
     :class="dark ? 'dark' : 'light'"
   >
     <div class="search-wrapper">
+      <div
+        class="search-input-wrapper"
+        :class="dark ? 'element-dark' : 'element-light'"
+      >
+        <span class="search-icon">
+        <i class="fas fa-search"></i>
+      </span>
       <input
         class="icon search"
-        :class="dark ? 'element-dark' : 'element-light'"
-        placeholder="&#xF002; Search for a country..."
+        placeholder="Search for a country..."
         type="text"
         v-on:keyup="findCountry($event.target.value)"
       />
-      <select
-        class="filter-options"
+      </div>
+      <div
+        class="filter-wrapper"
         :class="dark ? 'element-dark' : 'element-light'"
+      >
+        <select
+        class="filter-options"
         v-on:change="filterCountriesByRegion($event.target.value)"
       >
         <option
@@ -24,6 +34,8 @@
           {{ region }}
         </option>
       </select>
+      <span class="filter-icon"><i class="fas fa-chevron-down"></i></span>
+      </div>
     </div>
     <div class="card-container">
       <router-link
@@ -119,29 +131,35 @@ export default {
     margin: 24px 0;
   }
 
-  .search {
-    border: none;
+  .search-input-wrapper {
+    align-items: center;
     border-radius: $border-radius;
     color: $dark-grey;
-    font-family: "FontAwesome 5 Free", "Open Sans", Verdana, sans-serif;
-    font-style: normal;
-    font-weight: normal;
+    display: flex;
     line-height: 2.5rem;
-    min-width: 320px;
     padding: 0.5rem;
+  }
+
+  .search-icon {
+    padding: 0 1rem;
+  }
+
+  .search {
+    border: none;
+    color: $dark-grey;
+    min-width: 320px;
     text-decoration: inherit;
+  }
+
+  .filter-wrapper {
+    border-radius: $border-radius;
+    line-height: 2.5em;
+    padding: 0.5rem;
   }
 
   .filter-options {
     border: none;
-    border-radius: $border-radius;
     color: $dark-grey;
-    line-height: 2.5em;
-    padding: 0.5rem;
-
-    &:after {
-      content: "ccc";
-    }
   }
 
   .card-container {
@@ -189,8 +207,11 @@ export default {
     flex-basis: 48%;
   }
 
-  .search {
+  .search-input-wrapper {
     margin-bottom: 1rem;
+  }
+
+  .search {
     width: 100%;
   }
 }
