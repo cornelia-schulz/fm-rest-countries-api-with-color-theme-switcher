@@ -3,7 +3,12 @@
     class="header"
     :class="dark ? 'element-dark' : 'element-light'"
   >
-    <h1>Where in the world?</h1>
+    <router-link
+      class="home-link"
+      :to="{ name: 'home' }"
+    >
+      <h1>Where in the world?</h1>
+    </router-link>
     <button
       class="btnMode"
       :class="dark ? 'element-dark' : 'element-light'"
@@ -37,11 +42,18 @@
 </script>
 
 <style lang="scss">
+  @import "../assets/scss/variables.scss";
+  
   .header {
     display: flex;
     justify-content: space-between;
     padding: 2rem 5%;
     width: 100%;
+  }
+
+  .home-link {
+    color: $black;
+    text-decoration: none;
   }
 
   .btnMode {

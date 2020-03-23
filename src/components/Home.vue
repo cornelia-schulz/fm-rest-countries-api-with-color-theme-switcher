@@ -145,21 +145,35 @@ export default {
   }
 
   .search {
+    background-color: $very-light-grey;
     border: none;
     color: $dark-grey;
     min-width: 320px;
     text-decoration: inherit;
+
+    .element-dark & {
+      background-color: $dark-blue;
+    }
   }
 
   .filter-wrapper {
     border-radius: $border-radius;
     line-height: 2.5em;
     padding: 0.5rem;
+
+    &.element-dark {
+      color: $very-light-grey;
+    }
   }
 
   .filter-options {
+    background-color: $very-light-grey;
     border: none;
     color: $dark-grey;
+
+    .element-dark & {
+      background-color: $dark-blue;
+    }
   }
 
   .card-container {
