@@ -54,6 +54,10 @@
   .home-link {
     color: $black;
     text-decoration: none;
+
+    .element-dark & {
+      color: $very-light-grey;
+    }
   }
 
   .btnMode {

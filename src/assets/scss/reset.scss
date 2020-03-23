@@ -100,3 +100,13 @@ hr {
 input, select {
     vertical-align:middle;
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
