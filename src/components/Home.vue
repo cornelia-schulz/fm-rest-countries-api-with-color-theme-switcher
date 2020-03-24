@@ -123,7 +123,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 24px 0;
+    margin: 3rem 0;
   }
 
   .search-input-wrapper {
@@ -180,7 +180,7 @@ export default {
   .country-card {
     border-radius: $border-radius;
     flex-basis: 21%;
-    margin: 15px 0;
+    margin: 0.8rem 0;
     text-decoration: none;
   }
 
