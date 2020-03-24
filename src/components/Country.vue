@@ -135,7 +135,7 @@ export default {
   }
 
   .country {
-    flex-grow: 1;
+    flex-basis: 55%;
     margin-left: 2rem;
     padding: 2rem 2rem 6rem;
 

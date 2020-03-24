@@ -7,6 +7,7 @@
       <div
         class="search-input-wrapper"
         :class="dark ? 'element-dark' : 'element-light'"
+        name="search-term"
       >
         <span class="search-icon">
         <i class="fas fa-search"></i>
@@ -63,7 +64,6 @@
 
 <script charset="utf-8">
 import axios from 'axios';
-import { EventBus } from '../event-bus.js';
 
 export default {
   name: 'home',
@@ -108,10 +108,6 @@ export default {
         this.countryData = response.data,
         this.getRegions(response.data)
         ))
-    
-    EventBus.$on('switch-theme', dark => {
-      this.dark = dark;
-    });
   }
 }
 </script>
