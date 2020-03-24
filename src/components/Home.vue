@@ -7,13 +7,14 @@
       <div
         class="search-input-wrapper"
         :class="dark ? 'element-dark' : 'element-light'"
-        name="search-term"
       >
         <span class="search-icon">
         <i class="fas fa-search"></i>
       </span>
       <input
+        aria-label="search for a country"
         class="icon search"
+        name="search-term"
         placeholder="Search for a country..."
         type="text"
         v-on:keyup="findCountry($event.target.value)"
@@ -24,12 +25,15 @@
         :class="dark ? 'element-dark' : 'element-light'"
       >
         <select
+        aria-label="filter by region"
         class="filter-options"
+        name="filter"
         v-on:change="filterCountriesByRegion($event.target.value)"
       >
         <option
           v-for="(region, index) in regions"
           :key="index"
+          :label="region"
           :value="region"
         >
           {{ region }}
