@@ -128,14 +128,16 @@ export default {
     flex-basis: 50%;
   }
 
-  .flag > img {
-    width: 100%;
+  .flag { 
+    img {
+      width: 100%;
+    }
   }
 
   .country {
     flex-grow: 1;
     margin-left: 2rem;
-    padding: 2rem;
+    padding: 2rem 2rem 6rem;
 
     h2 {
       font-size: 2rem;

@@ -9,22 +9,16 @@
 </template>
 
 <script>
-import { EventBus } from './event-bus';
 import Navbar from './components/Navbar.vue';
 
 export default {
   components: {
     Navbar
   },
-  data() {
-    return {
-      dark: false
+  computed: {
+    dark () {
+      return this.$store.state.dark
     }
-  },
-  mounted(){
-    EventBus.$on('switch-theme', dark => {
-      this.dark = dark;
-    });
   },
   name: 'app'
 }

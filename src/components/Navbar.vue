@@ -21,20 +21,20 @@
 </template>
 
 <script>
-  import { EventBus } from '../event-bus.js';
-
   export default {
     data() {
       return {
-        buttonText: ' Dark Mode',
-        dark: false
+        buttonText: ' Dark Mode'
       }
     },
+    computed: {
+    dark () {
+      return this.$store.state.dark
+    }
+  },
     methods: {
       switchDisplayMode() {
-        this.dark = !this.dark;
-        this.buttonText = this.dark ? ' Light Mode' : ' Dark Mode';
-        EventBus.$emit('switch-theme', this.dark);
+        this.$store.dispatch('switchDisplayMode');
       }
     },
     name: 'navbar'

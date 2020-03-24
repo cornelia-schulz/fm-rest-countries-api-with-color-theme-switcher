@@ -71,9 +71,13 @@ export default {
     return {
       countries: null,
       countryData: null,
-      dark: false,
       filteredCountries: null,
       regions: null
+    }
+  },
+  computed: {
+    dark () {
+      return this.$store.state.dark
     }
   },
   methods: {
@@ -94,11 +98,6 @@ export default {
     },
     resetCountries() {
       this.countries = this.countryData.map(country => country);
-    },
-    switchDisplayMode() {
-      EventBus.$on('switch-theme', dark => {
-      this.dark = dark;
-      });
     }
   },
   mounted () {
