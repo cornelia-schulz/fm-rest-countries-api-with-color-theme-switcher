@@ -147,7 +147,7 @@ export default {
     background-color: $very-light-grey;
     border: none;
     color: $dark-grey;
-    min-width: 320px;
+    min-width: 400px;
     text-decoration: inherit;
 
     .element-dark & {
@@ -222,9 +222,11 @@ export default {
 
   .search-input-wrapper {
     margin-bottom: 1rem;
+    width: 100%;
   }
 
   .search {
+    min-width: auto;
     width: 100%;
   }
 }
