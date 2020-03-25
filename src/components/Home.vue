@@ -199,13 +199,13 @@ export default {
     padding: 2rem 1.5rem;
 
     h2 {
-      font-size: $details-font-size;
+      font-size: $details-header-font-size;
       line-height: 2.5rem;
     }
 
     p {
       font-size: $home-font-size;
-      line-height: 1.7rem;
+      line-height: 1.6rem;
     }
   }
 

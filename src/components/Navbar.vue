@@ -47,7 +47,7 @@
   .header {
     display: flex;
     justify-content: space-between;
-    padding: 2rem 5%;
+    padding: 1.9rem 5%;
     width: 100%;
   }
 
